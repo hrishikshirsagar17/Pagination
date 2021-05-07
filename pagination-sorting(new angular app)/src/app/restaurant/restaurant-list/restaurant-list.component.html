@@ -1,0 +1,76 @@
+<!-- Restaurant List Form -->
+    <ng-container>
+        <h3 class="kt-portlet__head-title" style="text-align: center;">
+            <h2>List</h2>
+        </h3>
+    </ng-container>
+    <br><br>
+    <div class="search-div">
+        <!-- <mat-form-field class="search-form-field">
+            <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyFilter()">
+            <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchKey" (click)="onSearchClear()">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field> -->
+    </div>
+    <div class="mat-elevation-z8">
+        <mat-table [dataSource]="listData" matSort>
+            <ng-container matColumnDef="restaurantName">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> res name </mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                    <span class="ellipsis" matTooltip="{{element.restaurantName}}">{{element.restaurantName}}</span>
+                </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="address">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> address </mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                    <span class="ellipsis" matTooltip="{{element.address}}">{{element.address}}</span>
+                </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="phoneNo">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> phone </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.phoneNo}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="open_time">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> open_time </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.open_time | convertFrom24To12Format}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="close_time">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> close_time </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.close_time | convertFrom24To12Format}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="updatedTime">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> updatedTime </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.updatedTime| slice:0:8}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="status">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> status </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="actions">
+                <mat-header-cell *matHeaderCellDef style="text-align: center;">actions</mat-header-cell>
+                <mat-cell *matCellDef="let element">
+
+                    <!-- <button mat-icon-button color="primary" matTooltip="Edit Restaurant" (click)="edit(element)">
+                        <mat-icon>create</mat-icon>
+                    </button>&nbsp;
+
+
+                    <button mat-icon-button color="primary" matTooltip="Delete Restaurant"
+                        (click)="deleteRestaurant(element)">
+                        <mat-icon>delete</mat-icon>
+                    </button>&nbsp;
+
+                    <button mat-icon-button color="primary" matTooltip="Change Status"
+                        (click)="changeStatus(element.id)">
+                        <mat-icon>autorenew</mat-icon>
+                    </button>&nbsp; -->
+                </mat-cell>
+            </ng-container>
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+        <mat-paginator [pageSizeOptions]="[3,6,9]" [pageSize]="3" showFirstLastButtons></mat-paginator>
+    </div>
+
+
